@@ -12,7 +12,6 @@ import { getPokemon } from '~/lib/pokemons'
 export const route = {
   preload({ params }) {
     getPokemon(+params.id)
-    getLoggedUser()
   },
 } satisfies RouteDefinition
 
@@ -35,7 +34,7 @@ export default function ViewPokemon(props: RouteSectionProps) {
           }
         >
           {(pokemon) => (
-            <div class="items-center">
+            <div class="flex flex-col items-center">
               <img
                 class="w-52"
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${

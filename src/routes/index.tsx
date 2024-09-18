@@ -8,7 +8,6 @@ import { getPokemons } from '~/lib/pokemons'
 export const route = {
   preload: () => {
     getPokemons()
-    getLoggedUser()
   },
 } satisfies RouteDefinition
 
