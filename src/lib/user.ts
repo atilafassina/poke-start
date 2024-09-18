@@ -55,9 +55,7 @@ export async function register(email: string, password: string) {
     .pbkdf2Sync(password, salt, 1000, 64, 'sha256')
     .toString('hex')
 
-  let [{ value: users }, { value: index }] = await storage.getItems([
-    'user:data',
-  ])
+  let [{ value: users }] = await storage.getItems(['user:data'])
 
   let user: User = { email, password: { hash, salt } }
   await Promise.all([
