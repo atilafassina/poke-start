@@ -5,7 +5,7 @@ import {
   createAsync,
 } from '@solidjs/router'
 import { Show, Suspense } from 'solid-js'
-import { Layout } from '~/components/layout'
+import { Layout } from '~/components/Layout'
 import { getLoggedUser } from '~/lib/auth'
 import { getPokemon } from '~/lib/pokemons'
 

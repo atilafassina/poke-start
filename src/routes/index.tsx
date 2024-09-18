@@ -1,7 +1,7 @@
 import { A, RouteDefinition, createAsync } from '@solidjs/router'
 import { For, Show, Suspense } from 'solid-js'
-import { Card } from '~/components/card'
-import { Layout } from '~/components/layout'
+import { Card } from '~/components/Card'
+import { Layout } from '~/components/Layout'
 import { getLoggedUser } from '~/lib/auth'
 import { getPokemons } from '~/lib/pokemons'
 
