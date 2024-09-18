@@ -1,58 +1,57 @@
-import { action, cache, redirect } from "@solidjs/router";
-import { storage, Pokemon } from "./db";
+import { action, cache, redirect } from '@solidjs/router'
+import { storage, Pokemon } from './db'
 
 export const getPokemons = cache(async () => {
-  "use server";
-  return ((await storage.getItem("pkm:data")) as Pokemon[]).reverse();
-}, "pokemon");
+  'use server'
+  return ((await storage.getItem('pkm:data')) as Pokemon[]).reverse()
+}, 'pokemon')
 
 export const getPokemon = cache(async (id: number) => {
-  "use server";
+  'use server'
 
-  return ((await storage.getItem("pkm:data")) as Pokemon[]).find(
+  return ((await storage.getItem('pkm:data')) as Pokemon[]).find(
     (pkm) => pkm.id === id
-  );
-}, "pkm");
+  )
+}, 'pkm')
 
 export const addPkm = action(async (data: FormData) => {
-  "use server";
+  'use server'
 
-  const pkmInput = Object.fromEntries(data.entries());
-
+  const pkmInput = Object.fromEntries(data.entries())
   let [{ value: pkm }, { value: index }] = await storage.getItems([
-    "pkm:data",
-    "pkm:counter",
-  ]);
+    'pkm:data',
+    'pkm:counter',
+  ])
 
-  let pokemon;
+  let pokemon
   await Promise.all([
-    storage.setItem("pkm:data", [
+    storage.setItem('pkm:data', [
       ...(pkm as Pokemon[]),
       (pokemon = { ...pkmInput, id: index as number, timestamp: Date.now() }),
     ]),
-    storage.setItem("pkm:counter", (index as number) + 1),
-  ]);
+    storage.setItem('pkm:counter', (index as number) + 1),
+  ])
 
-  throw redirect("/");
-});
+  throw redirect('/')
+})
 
 export const justAdd = async (data: FormData) => {
-  "use server";
+  'use server'
 
-  const pkmInput = Object.fromEntries(data.entries());
+  const pkmInput = Object.fromEntries(data.entries())
   let [{ value: pkm }, { value: index }] = await storage.getItems([
-    "pkm:data",
-    "pkm:counter",
-  ]);
+    'pkm:data',
+    'pkm:counter',
+  ])
 
-  let pokemon;
+  let pokemon
   await Promise.all([
-    storage.setItem("pkm:data", [
+    storage.setItem('pkm:data', [
       ...(pkm as Pokemon[]),
       (pokemon = { ...pkmInput, id: index as number, timestamp: Date.now() }),
     ]),
-    storage.setItem("pkm:counter", (index as number) + 1),
-  ]);
+    storage.setItem('pkm:counter', (index as number) + 1),
+  ])
 
-  return pokemon;
-};
+  return pokemon
+}

@@ -1,14 +1,14 @@
-import { addPkm } from "~/lib/pokemons";
+import { addPkm } from '~/lib/pokemons'
 
-export default function SingleFlight() {
+export default function AddPokemon() {
   return (
     <>
       <a
         href="/"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block m-5"
       >
-        {" "}
-        Go back{" "}
+        {' '}
+        Go back{' '}
       </a>
       <form
         method="post"
@@ -40,5 +40,5 @@ export default function SingleFlight() {
         </button>
       </form>
     </>
-  );
+  )
 }
