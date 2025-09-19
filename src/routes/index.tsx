@@ -1,28 +1,18 @@
-import { A, RouteDefinition, createAsync } from "@solidjs/router";
-import { For, Suspense } from "solid-js";
-import { Card } from "~/components/card";
-import { getPokemons } from "~/lib/pokemons";
+import { A, RouteDefinition, createAsync } from '@solidjs/router'
+import { For, Suspense } from 'solid-js'
+import { Card } from '~/components/card'
+import { getPokemons } from '~/db/pokemons'
 
 export const route = {
   load: () => getPokemons(),
-} satisfies RouteDefinition;
+} satisfies RouteDefinition
 
 export default function Home() {
-  const pokemons = createAsync(() => getPokemons());
+  const pokemons = createAsync(() => getPokemons())
 
   return (
     <main class="text-center py-10 mx-auto text-gray-700 max-w-5xl ">
       <h1>start.solidjs.com</h1>
-      <Suspense fallback={<div>Loading...</div>}>
-        <ul class="flex gap-5">
-          <For
-            each={pokemons()}
-            children={({ title, image }) => (
-              <Card title={title} image={image} />
-            )}
-          />
-        </ul>
-      </Suspense>
       <div class="p-5 flex gap-5 justify-center">
         <A
           href="/single"
@@ -37,6 +27,16 @@ export default function Home() {
           Multi Add
         </A>
       </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <For
+            each={pokemons()}
+            children={({ title, image }) => (
+              <Card title={title} image={image} />
+            )}
+          />
+        </ul>
+      </Suspense>
     </main>
-  );
+  )
 }

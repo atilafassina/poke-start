@@ -1,5 +1,5 @@
 {
-  "name": "example-with-tailwindcss",
+  "name": "single-flight-demo",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
@@ -8,17 +8,16 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@solidjs/router": "^0.14.5",
-    "@solidjs/start": "^1.0.6",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
-    "solid-js": "^1.8.22",
+    "@neondatabase/serverless": "^1.0.1",
+    "@solidjs/router": "^0.15.3",
+    "@solidjs/start": "^1.2.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "solid-js": "^1.9.9",
     "tailwindcss": "^3.4.12",
-    "unstorage": "^1.12.0",
-    "vinxi": "^0.4.3"
+    "vinxi": "^0.5.8"
   },
-  "engines": {
-    "node": ">=20",
-    "pnpm": ">=9"
+  "devDependencies": {
+    "@neondatabase/vite-plugin-postgres": "^0.2.2"
   }
 }

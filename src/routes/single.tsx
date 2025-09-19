@@ -1,14 +1,17 @@
-import { addPkm } from "~/lib/pokemons";
+import { For } from 'solid-js'
+import { addPkm, getPokemonNames } from '~/db/pokemons'
 
 export default function SingleFlight() {
+  const pokemonNames = getPokemonNames()
+
   return (
     <>
       <a
         href="/"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block m-5"
       >
-        {" "}
-        Go back{" "}
+        {' '}
+        Go back{' '}
       </a>
       <form
         method="post"
@@ -23,15 +26,17 @@ export default function SingleFlight() {
           placeholder="Pokemon name"
           class="border border-gray-400 rounded-md p-1"
         />
-        <input
-          class="border border-gray-400 rounded-md p-1"
-          type="number"
+        <select
+          name="pokemonName"
+          id="pokemonName"
           required
-          min={1}
-          name="image"
-          id="image"
-          placeholder="Image number"
-        />
+          class="border border-gray-400 rounded-md p-1"
+        >
+          <option value="">Select a Pokemon for the image</option>
+          <For each={pokemonNames}>
+            {(name) => <option value={name}>{name}</option>}
+          </For>
+        </select>
         <button
           type="submit"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -40,5 +45,5 @@ export default function SingleFlight() {
         </button>
       </form>
     </>
-  );
+  )
 }
