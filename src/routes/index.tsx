@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <main class="text-center py-10 mx-auto text-gray-700 max-w-5xl ">
-      <h1>start.solidjs.com</h1>
+      <h1 class="font-mono">github.com/atilafassina/poke-start</h1>
       <div class="p-5 flex gap-5 justify-center">
         <A
           href="/single"
